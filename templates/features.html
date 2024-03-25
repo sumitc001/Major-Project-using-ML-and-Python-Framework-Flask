@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation System Features</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 2em;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .feature {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        .feature:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .feature h2 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .feature p {
+            color: #666;
+            line-height: 1.6;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        footer p {
+            margin: 0;
+        }
+        .icon {
+            color: #333;
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        .back-button {
+            text-align: center;
+        }
+        .back-button a {
+            color: #fff;
+            background-color: #333;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .back-button a:hover {
+            background-color: #555;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 600px) {
+            header {
+                padding: 10px 0;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            .container {
+                padding: 10px;
+            }
+            .feature h2 {
+                font-size: 1.2em;
+            }
+            .feature p {
+                font-size: 1em;
+            }
+            .back-button a {
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Crop Recommendation System Features</h1>
+</header>
+
+<div class="container">
+
+    <div class="feature">
+        <h2><i class="icon fas fa-seedling"></i> Soil Analysis</h2>
+        <p>The system analyzes soil characteristics such as pH level, nutrient content, and moisture levels.</p>
+    </div>
+
+    <div class="feature">
+        <h2><i class="icon fas fa-cloud-sun"></i> Climate Data Integration</h2>
+        <p>Integrates historical and real-time climate data to assess temperature, rainfall, humidity, and other relevant factors.</p>
+    </div>
+
+    <div class="feature">
+        <h2><i class="icon fas fa-database"></i> Crop Database</h2>
+        <p>Includes a comprehensive database of various crops along with their growth requirements, susceptibility to diseases, and optimal conditions.</p>
+    </div>
+
+    <div class="feature">
+        <h2><i class="icon fas fa-brain"></i> Machine Learning Algorithms</h2>
+        <p>Utilizes machine learning algorithms to process input data and provide personalized crop recommendations based on soil analysis, climate data, and crop database.</p>
+    </div>
+
+    <div class="feature">
+        <h2><i class="icon fas fa-user-friends"></i> User Interface</h2>
+        <p>Offers an intuitive and user-friendly interface for farmers to input their location, soil data, and preferences, and receive crop recommendations.</p>
+    </div>
+
+    <div class="back-button">
+        <a href="{{ url_for('index') }}" class="back-button">Back</a>
+
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2024 Crop Recommendation System</p>
+</footer>
+
+</body>
+</html>

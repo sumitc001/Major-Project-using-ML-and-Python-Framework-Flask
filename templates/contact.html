@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='contact.css') }}">
+</head>
+<body>
+    <div class="contact-container">
+        <h1>Contact Us</h1>
+        <div class="contact-info">
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Sanctoria, Asansol, India</p>
+                <p>Mohishila, Asansol, India</p>
+                <p>Govindapur, Asansol, India</p>
+                <p>Rupnarayanpur, Asansol, India</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-phone-alt"></i>
+                <p>8167007322</p>
+                <p>9563742370</p>
+                <p>9113124535</p>
+                <p>9304988416</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <p>khawassiddhartha73@gmail.com</p>
+                <p>subhamchakraborty5656@gmail.com</p>
+                <p>shivamlkr502@gmail.com</p>
+                <p>sumitkumarchoubey.mca.aec@gmail.com</p>
+               
+            </div>
+        </div>
+        <div class="social-media">
+            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f facebook-color"></i></a>
+            <a href="https://web.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp whatsapp-color"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in linkedin-color"></i></a>
+            <a href="https://mail.google.com/" target="_blank"><i class="far fa-envelope gmail-color"></i></a>
+        </div>
+        <br>
+        <br>
+        <div class="back-button">
+            
+            <a href="{{ url_for('index') }}">Back</a>
+
+
+        </div>
+    </div>
+</body>
+</html>

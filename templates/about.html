@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+    <style>
+        .justified {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       
+        <!-- Profile Card 1 -->
+        <div class="profile-card">
+            <div class="photo-wrapper">
+                <img src="{{ url_for('static', filename='Sid.jpg') }}" alt="Logo">
+            </div>
+            <div class="description">
+                <h1>Siddhartha Khawas</h1>
+                <p class="justified">Hello! My Name is Siddhartha Khawas from Asansol, West Bengal, India, currently pursuing MCA at Asansol Engineering College. Passionate about computer applications and eager to excel. Download my CV below for more information.
+                </p>
+                <br>
+                <li>
+                <a href="static/siddhartha.pdf">Download CV</a>
+            </li>
+        </br>
+            </div>
+        </div>
+        
+        <!-- Profile Card 2 -->
+        <div class="profile-card">
+            <div class="photo-wrapper">
+                <img src="{{ url_for('static', filename='subham.jpg') }}" alt="Logo">
+            </div>
+            <div class="description">
+                <h1>Subham Chakraborty</h1>
+                <p class="justified">Hello! My Name is Subham Chakraborty from Asansol, West Bengal, India, currently studying MCA at Asansol Engineering College, with a keen interest in computer applications. Download my CV to discover more about my journey and skills.</p>
+                <br><li><a href="static/subham.pdf">Download CV</a></li></br>
+            </div>
+        </div>
+
+        <!-- Profile Card 3 -->
+        <div class="profile-card">
+            <div class="photo-wrapper">
+                <img src="{{ url_for('static', filename='sumit.jpg') }}" alt="Logo">
+            </div>
+            <div class="description">
+                <h1>Sumit Kumar Choubey</h1>
+                <p class="justified">Hi there! My name is Sumit Kumar Choubey, and I'm currently pursuing MCA at Asansol Engineering College. Passionate about technology and eager to delve into the world of computer applications. Download my CV below to explore further.</p>
+                <br><li><a href="static/sumit.pdf">Download CV</a></li></br>
+            </div>
+        </div>
+        
+        <!-- Profile Card 4 -->
+        <div class="profile-card">
+            <div class="photo-wrapper">
+                <img src="{{ url_for('static', filename='shivam.jpg') }}" alt="Logo">
+            </div>
+            <div class="description">
+                <h1>Shivendu Shivam</h1>
+                <p class="justified">Hi there! My Name is Shivendu Shivam, hailing from Lakhisarai, Bihar, currently specializing in computer applications at Asansol Engineering College, with a keen interest in computer applications.For further insights into my journey, download my CV below.</p>
+                <br><li><a href="static/shivam.pdf">Download CV</a></li></br>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <a href="{{ url_for('index') }}" class="back-button">Back to Home</a>
+
+
+        
+    </div>
+</body>
+</html>

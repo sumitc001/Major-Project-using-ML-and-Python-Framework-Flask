@@ -59,9 +59,20 @@ class User(UserMixin):
 
 
 @app.route('/')
-def index1():
-    return 'Home page.'
+def index():
+    return render_template('index.html')
 
+@app.route('/about.html')
+def about():
+    return render_template('about.html')
+
+@app.route('/features.html')
+def features():
+    return render_template('features.html')
+
+@app.route('/contact.html')
+def contact():
+    return render_template('contact.html')
 
 
 @app.route('/login', methods = ['GET','POST'])
@@ -149,7 +160,7 @@ def predict():
 def logout():
     logout_user()
     flash('logout successful see you soon.', 'success')
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 
 
 @app.route('/forgot_password', methods=['GET', 'POST'])
