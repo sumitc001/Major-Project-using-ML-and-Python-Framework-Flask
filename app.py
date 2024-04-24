@@ -14,6 +14,12 @@ import sklearn
 import pickle
 import warnings
 
+''' 
+{%...%} condations, for loops
+{{   }} expressions to print output
+{#...#} this is for comments
+'''
+
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 model = pickle.load(open('models/RandomForest.pkl','rb'))
@@ -58,7 +64,7 @@ class User(UserMixin):
 
 
 
-@app.route('/')
+@app.route('/') # THis is decoreater its use for create a url.
 def index():
     return render_template('index.html')
 
