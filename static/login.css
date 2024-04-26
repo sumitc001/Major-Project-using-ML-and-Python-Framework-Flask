@@ -35,6 +35,15 @@ button {
     border-style: solid;
     border-color: #4CAF50;
     border-radius: 2rem;
-    padding: 2rem
+    padding: 2rem;
+    background-color:rgb(250, 249, 248);
+    
+    
+}
+
+body{
+
+    background-image: url('bg.jpg');
+    overflow: hidden; /* Hide scrollbars */
     
 }

@@ -66,7 +66,7 @@ class User(UserMixin):
 
 @app.route('/') # THis is decoreater its use for create a url.
 def index():
-    return render_template('index.html')
+    return render_template('index1.html')
 
 @app.route('/about.html')
 def about():
@@ -95,7 +95,7 @@ def login():
             user = User(user_data[0],user_data[1],user_data[2])
             login_user(user)
             flash('login successfully insert the data and predict the crop', 'success')
-            return render_template('crop.html')
+            return render_template('new.html')
 
         else:
             flash('Invalid email or password. Please try again.', 'error')
@@ -152,12 +152,22 @@ def predict():
     feature_list = [N,P,k,temperature,humidity,ph,rainfall]
     features = np.array([[feature_list]]).reshape(1, -1)
     prediction = model.predict(features)[0]
+    print(prediction)
 
-    if True:
+    crop_list = ["rice", "maize", "jute", "cotton", "coconut", "papaya", "orange",
+             "apple", "muskmelon", "watermelon", "grapes", "mango", "banana",
+             "pomegranate", "lentil", "blackgram", "mungbean", "mothbeans",
+             "pigeonpeas", "kidneybeans", "chickpea", "coffee"]
 
-       result = "{} is a best crop to be cultivated. ".format(prediction)
+  
+    if prediction in crop_list:
+   
+        result = "{} is a best crop to be cultivated. ".format(prediction)
+    else:
+        result = "Sorry, we could not determine the best crop to be cultivated with the provided data."
 
-    return render_template('crop.html',result = result)
+    # return render_template('crop.html',result = result)
+    return render_template('new.html',result = result)
    
 
 
