@@ -65,7 +65,7 @@ class User(UserMixin):
 
 
 @app.route('/') # THis is decoreater its use for create a url.
-def index():
+def index1():
     return render_template('index1.html')
 
 @app.route('/about.html')
@@ -170,6 +170,7 @@ def predict():
         result = "Sorry, we could not determine the best crop to be cultivated with the provided data."
 
     # return render_template('crop.html',result = result)
+    flash('Check the result.', 'succes')
     return render_template('new.html',result = result)
    
 
@@ -179,7 +180,7 @@ def predict():
 def logout():
     logout_user()
     flash('logout successful see you soon.', 'success')
-    return redirect(url_for('index'))
+    return redirect(url_for('index1'))
 
 
 @app.route('/forgot_password', methods=['GET', 'POST'])

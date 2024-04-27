@@ -15,6 +15,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            
         }
         .container {
             width: 95%;
@@ -44,6 +45,20 @@
             font-size: 16px;
             color: #204020; /* Reusing the body text color for consistency */
         }
+        .back-button {
+            text-align: center;
+          }
+          .back-button a {
+            color: #fff;
+            background-color: #333;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+          }
+          .back-button a:hover {
+            background-color: #555;
+          }
         @media (max-width: 768px) {
             .container {
                 padding: 10px;
@@ -90,6 +105,12 @@
         <div class="section">
             <h2>Rainfall</h2>
             <p>Range: 800 - 1500 mm/year</p>
+        </div>
+        <div class="back-button">
+            
+            <a href="{{ url_for('index') }}">Back</a>
+
+
         </div>
     </div>
 </body>
