@@ -80,6 +80,9 @@ def features():
 def contact():
     return render_template('contact.html')
 
+@app.route('/det.html')
+def det():
+    return render_template('det.html')
 
 @app.route('/login', methods = ['GET','POST'])
 def login():
