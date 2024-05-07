@@ -248,7 +248,9 @@ def reset_password():
         
         # Validate the new password and confirm password match
         if new_password != confirm_password:
-            return "Passwords do not match. Please try again."
+
+              flash('Passwords do not match. Please try again.', 'error')
+              return render_template('login.html')
         # Verify the token and update the user's password in the database
         else:
            cursor = mysql.connection.cursor()
