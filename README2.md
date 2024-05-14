@@ -325,7 +325,7 @@ This appears to be a Jinja template file, which is commonly used in Flask web ap
 
 15. `{% endblock %}`: This marks the end of the template file, closing any open blocks.
 
-#index1.html
+# index1.html
 This is an HTML file that likely serves as a webpage for a Crop Recommendation System. Let's break down each line:
 
 1. `<!DOCTYPE html>`: This declaration specifies the document type and version of HTML being used, which is HTML5 in this case.
@@ -404,7 +404,7 @@ This is an HTML file that likely serves as a webpage for a Crop Recommendation S
 
 38. `</html>`: This closes the HTML document.
 
-#login.html
+# login.html
 Sure, let's go through each line of this Flask template:
 
 ```html
@@ -482,7 +482,7 @@ Sure, let's go through each line of this Flask template:
 ```
 - This block tag indicates the end of the content section of the template.
 
-#new.html
+# new.html
 Sure, let's go through each line of this HTML document:
 
 ```html
@@ -586,7 +586,7 @@ Sure, let's go through each line of this HTML document:
 ```
 - This section closes the body and HTML tags, ending the document.
 
-reset_password.html
+# reset_password.html
 Certainly! Let's break down each line of this HTML document:
 
 ```html
@@ -671,7 +671,7 @@ Certainly! Let's break down each line of this HTML document:
 ```
 - This line ends the content block.
 
-#signup.html
+# signup.html
 Sure, let's go through each line of this HTML document:
 
 ```html
