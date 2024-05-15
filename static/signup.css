@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    
 }
 form {
     width: 300px;
@@ -35,5 +36,13 @@ button {
     border-color: #4CAF50;
     border-radius: 2rem;
     padding: 2rem;
+    background-color:rgb(250, 249, 248);
+
     
+}
+
+body{
+
+    background-image: url('bg3.jpg');
+    overflow: hidden; /* Hide scrollbars */
 }
