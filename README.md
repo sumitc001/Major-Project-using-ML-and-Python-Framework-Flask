@@ -1,4 +1,4 @@
-# Short video demonstration for our major project for recommendation system 🌱
+# Short video demonstration for our major project on Crop recommendation system 🌱
 
 
 
