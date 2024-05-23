@@ -152,24 +152,34 @@ def predict():
     ph = request.form['Ph']
     rainfall = request.form['Rainfall']
 
-    feature_list = [N,P,k,temperature,humidity,ph,rainfall]
-    features = np.array([[feature_list]]).reshape(1, -1)
-    prediction = model.predict(features)[0]
-    print(prediction)
+    N = float(N)
+    P = float(P)
+    k = float(k)
+    temperature = float(temperature)
+    humidity = float(humidity)
+    ph = float(ph)
+    rainfall = float(rainfall)
 
-    crop_list = ["rice", "maize", "jute", "cotton", "coconut", "papaya", "orange",
-             "apple", "muskmelon", "watermelon", "grapes", "mango", "banana",
-             "pomegranate", "lentil", "blackgram", "mungbean", "mothbeans",
-             "pigeonpeas", "kidneybeans", "chickpea", "coffee"]
+    if (N >=0 and N <= 140) and  (P >=0 and P <= 145) and  (k >=0 and k <= 205) and  (temperature >=0 and temperature <= 44) and  (humidity	>=0 and humidity <= 100) and  (ph >=0 and ph <= 10) and  (rainfall >=0 and rainfall <= 221):
 
-  
-    if prediction in crop_list:
-   
-        result = "{} is a best crop to be cultivated. ".format(prediction)
+         feature_list = [N,P,k,temperature,humidity,ph,rainfall]
+         features = np.array([[feature_list]]).reshape(1, -1)
+         prediction = model.predict(features)[0]
+         print(prediction)
+     
+         crop_list = ["rice", "maize", "jute", "cotton", "coconut", "papaya", "orange",
+                  "apple", "muskmelon", "watermelon", "grapes", "mango", "banana",
+                  "pomegranate", "lentil", "blackgram", "mungbean", "mothbeans",
+                  "pigeonpeas", "kidneybeans", "chickpea", "coffee"]
+     
+       
+         if prediction in crop_list:
+        
+             result = "{} is a best crop to be cultivated. ".format(prediction)
     else:
         result = "Sorry, we could not determine the best crop to be cultivated with the provided data."
-
-    # return render_template('crop.html',result = result)
+     
+         # return render_template('crop.html',result = result)
     flash('Check the result.', 'succes')
     return render_template('new.html',result = result)
    
