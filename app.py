@@ -160,7 +160,7 @@ def predict():
     ph = float(ph)
     rainfall = float(rainfall)
 
-    if (N >=0 and N <= 140) and  (P >=0 and P <= 145) and  (k >=0 and k <= 205) and  (temperature >=0 and temperature <= 44) and  (humidity	>=0 and humidity <= 100) and  (ph >=0 and ph <= 10) and  (rainfall >=0 and rainfall <= 221):
+    if (N >0 and N <= 140) and  (P >0 and P <= 145) and  (k >0 and k <= 205) and  (temperature >0 and temperature <= 44) and  (humidity	>=0 and humidity <= 100) and  (ph >=0 and ph <= 10) and  (rainfall >=0 and rainfall <= 221):
 
          feature_list = [N,P,k,temperature,humidity,ph,rainfall]
          features = np.array([[feature_list]]).reshape(1, -1)
