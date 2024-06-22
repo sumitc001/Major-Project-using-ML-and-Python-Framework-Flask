@@ -16,8 +16,9 @@
             <input type="hidden" name="csrfmiddlewaretoken" value="your-csrf-token-here">
             
 
-            <label for="Name">Name</label>
-            <input type="text" id="name" name="name" title="Please enter the name" required>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" pattern="[A-Za-z\s]+" title="Please enter a valid name (letters and spaces only)" required>
+
 
             
             <label for="email">Email</label>
