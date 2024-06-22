@@ -9,9 +9,13 @@ from email.mime.text import MIMEText  # MIMEText is a class for creating email m
 from email.mime.multipart import MIMEMultipart  # MIMEMultipart is a class for creating email message objects with multiple parts, such as both plain text and HTML content.
 
 import numpy as np ## This line imports the NumPy library and assigns it the alias 'np'. Numpy ia a fundamental package for numerical computing in Python, provading support for large multi-dimensional arrays and matrices, along with a collection of mathematical funcation to operate on these array.
+
 import pandas # This line imports the pandas library , Pandas is a powerful data manipulation and analysis library for Python.
+
 import sklearn # scikit-learn is a machine learning library for Python that provides simple and efficent tools for data mining and data analysis. The 'metrics' module contains various metrics for evaluating the performance of machine learning models.
+
 import pickle   # pickle is used for serializing and deserializing Python objects, effectively converting them into byte streams for storage or transmission. In this case, it's loading a pre-trained Random Forest model from a file.
+
 import warnings  ## This line imports the warnings module, which provides a mechanism to control the behavior of warnings in Python code.
 
 ''' 
@@ -40,15 +44,19 @@ login_manager = LoginManager() #These lines initialize the LoginManager instance
 login_manager.init_app(app)
 
 #User Loader funcation
-@login_manager.user_loader #This is a decorator used to register a user loader function with the login_manager. 
-def load_user(email): #he user_loader callback is used to reload the user object from the user ID stored in the session,load_user that takes an email as an argument and returns the corresponding User object. This function is used by Flask-Login to retrieve the user object based on the user's email.
+@login_manager.user_loader #This is a decorator used to register a user loader function    
+                           # with the login_manager. 
+def load_user(email): 
     return User.get(email)
+#the user_loader callback is used to reload the user object from the    user ID stored in the session,load_user that takes an email as an argument and returns the corresponding User object. This function is used by Flask-Login to retrieve the user object based on the user's email.
 
 class User(UserMixin):
-    def __init__(self, user_id,name, email):  #This defines a User class that inherits from UserMixin, which is provided by Flask-Login. The UserMixin class provides default implementations for the methods required by the user model. Inside the User class, you're defining an __init__ method to initialize the user object with user_id, name, and email attributes. This class represents the user model in your application.
+    def __init__(self, user_id,name, email):  
         self.id = user_id
         self.name = name
         self.email = email
+
+        #This defines a User class that inherits from UserMixin, which is provided by Flask-Login. The UserMixin class provides default implementations for the methods required by the user model. Inside the User class, you're defining an __init__ method to initialize the user object with user_id, name, and email attributes. This class represents the user model in your application.
      
        
  
@@ -56,10 +64,15 @@ class User(UserMixin):
     @staticmethod  #This decorator is used to declare a method as a static method within the User class. Static methods in Python are methods that are bound to the class rather than the instance of the class. They can be called on the class itself without needing an instance.
     def get(user_id):
         cursor = mysql.connection.cursor() #Here, you're obtaining a cursor object from the MySQL connection using the cursor() method. The cursor object allows you to execute SQL queries and fetch data from the database.
+
         cursor.execute('select name, email from users where id = %s',(user_id,)) #This line executes an SQL query to select the name and email columns from the users table where the id matches the provided user_id. The %s placeholder is used for parameterized queries to prevent SQL injection attacks. The user_id value is passed as a parameter to the query.
+
         result = cursor.fetchone() #After executing the query, this line fetches the row of the result set returned by the query and assigns it to the result variable. 
+
         cursor.close() #This line closes the cursor object to release the database resources. 
+
         if result: #This conditional block checks if result contains any data. 
+
             return User(user_id, result[0],result[1]) #This method essentially retrieves a user from the database based on the provided user_id and returns a corresponding User object.
 
 
@@ -86,19 +99,23 @@ def det():
     return render_template('det.html')
 
 @app.route('/login', methods = ['GET','POST']) #The route decorator binds the URL '/login' to the 'login()' function and specifies that this route should respond to both GET and POST requests.
+
 def login():
     if request.method == 'POST': #This condition checks if the incoming request method is POST. If it is, it means that the user has submitted the login form.
         
-        email = request.form['email'] #These lines extract the email and password entered by the user from the form submitted with the POST request.
-        password = request.form['password']
+        email = request.form['email'] #These lines extract the email and password entered 
+        password = request.form['password'] #by the user from the form submitted with the POST request.
         cursor = mysql.connection.cursor()
         cursor.execute('select id,name,email, password from users where email = %s', (email,))
         user_data = cursor.fetchone()
         cursor.close()
         if user_data and bcrypt.check_password_hash(user_data[3], password): #This condition checks if 'user_data' contains any data (i.e., if a user with the provided email exists in the database) and if the provided password matches the hashed password stored in the database. It uses 'bcrypt.check_password_hash()' to compare the provided password with the hashed password retrieved from the database.
+
             user = User(user_data[0],user_data[1],user_data[2]) #If the email and password are valid, a new User object is created using the user's id, name, and email retrieved from the database. Then, this user is logged in using 'login_user(user)', which is a function provided by Flask-Login for logging in users.
+
             login_user(user)
             flash('login successfully insert the data and predict the crop', 'success') #A flash message is added to provide feedback to the user that they have successfully logged in. The 'success' category is used for styling purposes.
+
             return render_template('new.html') #If the login is successful, the user is redirected to the 'new.html' template,
 
         else:
@@ -110,11 +127,12 @@ def login():
 
 
 @app.route('/signup', methods = ['GET','POST']) #The route decorator binds the URL '/signup' to the 'signup()' function and specifies that this route should respond to both GET and POST requests.
+
 def signup():
     if request.method == 'POST': #This condition checks if the incoming request method is POST. If it is, it means that the user has submitted the signup form.
        
-        name = request.form['name'] #These lines extract the name, email, and password entered by the user from the form submitted with the POST request.
-        email = request.form['email']
+        name = request.form['name'] #These lines extract the name, email, and password entered by the user from 
+        email = request.form['email'] #the form submitted with the POST request.
         password = request.form['password']
 
         # Check if email already exists in the database
@@ -137,16 +155,15 @@ def signup():
 
     return render_template('signup.html')
 
-# @app.route('/')
-# def index():
-#     return render_template('index.html')
 
-@app.route("/predict",methods=['POST']) #This route decorator binds the URL '/predict' to the 'predict()' function and specifies that this route should respond only to POST requests. Additionally, the @login_required decorator ensures that only authenticated users can access this route.
+@app.route("/predict",methods=['GET','POST']) #This route decorator binds the URL '/predict' to the 'predict()' function and specifies that this route should respond only to POST requests. Additionally, 
+
+#the @login_required decorator ensures that only authenticated users can access this route.
 @login_required
 def predict():
 
-    N = request.form['Nitrogen'] #These lines extract the input data (Nitrogen, Phosphorus, Potassium, Temperature, Humidity, pH, Rainfall) submitted via the POST request form.
-    P = request.form['Phosporus']
+    N = request.form['Nitrogen'] #These lines extract the input data (Nitrogen, Phosphorus, Potassium,  
+    P = request.form['Phosporus'] #Temperature, Humidity, pH, Rainfall) submitted via the POST request form.
     k = request.form['Potassium']
     temperature = request.form['Temperature']
     humidity = request.form['Humidity']
@@ -164,7 +181,9 @@ def predict():
     if (N >0 and N <= 140) and  (P >0 and P <= 145) and  (k >0 and k <= 205) and  (temperature >0 and temperature <= 44) and  (humidity	>=0 and humidity <= 100) and  (ph >=0 and ph <= 10) and  (rainfall >=0 and rainfall <= 221):
 
          feature_list = [N,P,k,temperature,humidity,ph,rainfall] #Here, you're constructing a feature list containing the input data, which is then converted into a NumPy array and reshaped into the required format (1 sample, multiple features) for making predictions.
-         features = np.array([[feature_list]]).reshape(1, -1)
+
+         features = np.array([[feature_list]]).reshape(1, -1) #Reshaping a dataset using reshape(1, -1) typically means converting a multi-dimensional array into a one-dimensional array, organized as a single row.
+
          prediction = model.predict(features)[0]
          print(prediction)
      
@@ -234,8 +253,8 @@ def send_reset_email(email, token): #This function send_reset_email(email, token
     sender_password = 'zytp ymro kshi kyxx'
     receiver_email = email  #This line sets the receiver's email address to the provided email parameter.
 
-    message = MIMEMultipart()       #ere, you're creating an instance of MIMEMultipart() to compose the email message. You set the sender, receiver, and subject of the email.
-    message['From'] = sender_email
+    message = MIMEMultipart()       #Here, you're creating an instance of MIMEMultipart() to compose the email 
+    message['From'] = sender_email  #message. You set the sender, receiver, and subject of the email.
     message['To'] = receiver_email
     message['Subject'] = 'Password Reset Request'
                                                          #This is the body of the email message, which contains the password reset instructions along with the unique token. The token is appended to the reset password URL as a query parameter.
@@ -253,7 +272,8 @@ def send_reset_email(email, token): #This function send_reset_email(email, token
         server.send_message(message)
 
 @app.route('/reset_password', methods=['GET', 'POST']) #This route decorator binds the URL '/reset_password' to the 'reset_password()' function and specifies that this route should respond to both GET and POST requests.
-def reset_password():                                  #This function handles the logic for resetting the user's password.
+def reset_password():                                  #This function handles the logic for resetting the 
+                                                        #user's password.
     if request.method == 'POST':                      #This condition checks if the incoming request method is POST. If it is, it means that the user has submitted the reset password form.
         # Extract the token and new password from the form submission
         token = request.form['token']
@@ -278,7 +298,8 @@ def reset_password():                                  #This function handles th
 
             # Update the user's password and clear the reset token
             cursor = mysql.connection.cursor()
-            cursor.execute('UPDATE users SET password = %s, reset_token = NULL WHERE id = %s', (hashed_password, user[0])) #This block updates the user's password in the database with the new hashed password and clears the reset token associated with the user.
+            cursor.execute('UPDATE users SET password = %s, reset_token = NULL WHERE id = %s',(hashed_password, user[0])) 
+            #This block updates the user's password in the database with the new hashed password and clears the reset token associated with the user.
             mysql.connection.commit()
             cursor.close() 
 
